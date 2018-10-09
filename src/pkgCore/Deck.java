@@ -71,10 +71,5 @@ public class Deck {
 		if (eNum instanceof eSuit) {
 			return (int) cardsInDeck.stream().filter(x-> x.geteSuit()== (eSuit) eNum).count();
 	}
-	*/
-	
-	
-	
-	
-	
+	*/	
 }
