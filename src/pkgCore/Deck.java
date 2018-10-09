@@ -22,8 +22,7 @@ public class Deck {
 
 	public Card Draw() throws DeckException {
 
-		if (cardsInDeck.size() == 0)
-		{
+		if (cardsInDeck.size() == 0) {
 			throw new DeckException(this);
 		}
 		return cardsInDeck.remove(0);
@@ -40,8 +39,42 @@ public class Deck {
 		return (null);
 	}
 
-	public int getiDeckCount()
-	{
+	public int getiDeckCount() {
 		return cardsInDeck.size();
 	}
+
+	public int getRemaining(Object eNum) {
+		int count = 0;
+
+		for (Card c : cardsInDeck) {
+			if (eNum instanceof eRank) {
+				if (c.geteRank() == (eRank) eNum) {
+					count++;
+				}
+			} else if (eNum instanceof eSuit) {
+				if (c.geteSuit() == (eSuit) eNum) {
+					count++;
+				}
+			}
+		}
+
+		return count;
+	}
+/*
+	alternate method, uses stream and filter
+	
+	public int getRemainingStrem(Object eNum)
+	{
+		if (eNum instanceof eRank) {
+			return (int) cardsInDeck.stream().filter(x -> x.geteRank()== (eRank) eNum).count();
+		}
+		if (eNum instanceof eSuit) {
+			return (int) cardsInDeck.stream().filter(x-> x.geteSuit()== (eSuit) eNum).count();
+	}
+	*/
+	
+	
+	
+	
+	
 }
